@@ -1,32 +1,29 @@
 package com.example.yuriiweatherapikotlin.adapter
 
-import android.R
-import android.icu.number.Scale.none
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.NonNull
+import com.example.yuriiweatherapikotlin.R
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yuriiweatherapikotlin.models.WeatherDay
 
 
-class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
+class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
     private var weathers: List<WeatherDay> = ArrayList()
     fun setWeathers(weathersVM: List<WeatherDay>) {
         weathers = weathersVM
         notifyDataSetChanged()
     }
 
-    @NonNull
-    override fun onCreateViewHolder(@NonNull parent: ViewGroup, viewType: Int): WeatherViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
         val view: View = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.weather_item, parent, false)
         return WeatherViewHolder(view)
     }
 
-    override fun onBindViewHolder(@NonNull holder: WeatherViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
         val weather = weathers[position]
         holder.textViewMax.text = weather.getTemperature().maxTemperature
         holder.textViewMin.text = weather.getTemperature().minTemperature
@@ -45,12 +42,12 @@ class WeatherAdapter : RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() 
         return weathers.size
     }
 
-    internal class WeatherViewHolder(@NonNull itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val textViewMax: TextView
-        private val textViewMin: TextView
-        private val textViewAvg: TextView
-        private val textViewDate: TextView
-        private val textViewFall: TextView
+    inner class WeatherViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textViewMax: TextView
+        val textViewMin: TextView
+        val textViewAvg: TextView
+        val textViewDate: TextView
+        val textViewFall: TextView
 
         init {
             textViewAvg = itemView.findViewById(R.id.textViewAvg)
