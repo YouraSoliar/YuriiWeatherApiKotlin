@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">YuriiWeatherApiKotlin</string>
+
+    <string name="edit_text_city">tap your city</string>
+    <string name="text_view_max">max:</string>
+    <string name="text_view_avg">avg:</string>
+    <string name="text_view_min">min:</string>
+    <string name="text_view_fall_out">fall out:</string>
+    <string name="button_find_weather">find weather</string>
+    <string name="rain">rain</string>
+    <string name="snow">snow</string>
+    <string name="none">none</string>
+    <string name="toast_fill_field">fill the field</string>
+    <string name="text_view_get_location">get your location</string>
+    <string name="toast_no_city">no such city</string>
+    <string name="toast_no_internet">No Internet</string>
 </resources>

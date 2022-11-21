@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<androidx.cardview.widget.CardView
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:padding="4dp"
+        android:background="@color/brown"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="2022-01-01"
+            android:id="@+id/textViewDate"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.5"
+            android:orientation="vertical" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
+            android:text="@string/text_view_max"
+            android:id="@+id/textViewLabelMax"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDate"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMax"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:text="0"
+            android:id="@+id/textViewMax"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDate"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/textViewLabelMax"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/text_view_min"
+            android:id="@+id/textViewLabelMin"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDate"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMin"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/guideline"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/white"
+            android:text="0"
+            android:id="@+id/textViewMin"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDate"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toEndOf="@+id/textViewLabelMin"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/white"
+            android:text="@string/text_view_avg"
+            android:id="@+id/textViewLabelAvg"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLabelMax"
+            app:layout_constraintEnd_toStartOf="@+id/textViewAvg"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:text="0" android:id="@+id/textViewAvg"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMax"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@+id/textViewLabelAvg"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:text="@string/text_view_fall_out"
+            android:id="@+id/textViewLabelFall"
+            app:layout_constraintTop_toBottomOf="@+id/textViewLabelMin"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMin"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@+id/guideline"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/white"
+            android:text="none"
+            android:id="@+id/textViewFall"
+            app:layout_constraintTop_toBottomOf="@+id/textViewMin"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@+id/textViewLabelMin"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
