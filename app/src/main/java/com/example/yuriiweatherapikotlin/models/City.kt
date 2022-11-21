@@ -1,4 +1,3 @@
 package com.example.yuriiweatherapikotlin.models
 
-class City {
-}
+class City(var city: String)
