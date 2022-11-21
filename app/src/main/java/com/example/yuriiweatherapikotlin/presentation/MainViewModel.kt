@@ -1,7 +1,6 @@
 package com.example.yuriiweatherapikotlin.presentation
 
 import android.Manifest
-import android.R
 import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
@@ -15,6 +14,7 @@ import androidx.core.app.ActivityCompat
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.yuriiweatherapikotlin.R
 import com.example.yuriiweatherapikotlin.api.ApiFactory
 import com.example.yuriiweatherapikotlin.models.City
 import com.example.yuriiweatherapikotlin.models.WeatherDay
