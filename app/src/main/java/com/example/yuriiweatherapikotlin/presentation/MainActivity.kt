@@ -2,6 +2,8 @@ package com.example.yuriiweatherapikotlin.presentation
 
 import android.Manifest
 import android.content.Context
+import android.content.DialogInterface
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.drawable.ColorDrawable
 import android.location.Address
@@ -9,7 +11,13 @@ import android.location.Geocoder
 import android.location.Location
 import android.net.ConnectivityManager
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.ViewModelProvider
@@ -26,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var adapter: WeatherAdapter
     private lateinit var viewModel: MainViewModel
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private lateinit var sharedPreferences: SharedPreferences
 
     private lateinit var binding: ActivityMainBinding
 
@@ -49,6 +58,20 @@ class MainActivity : AppCompatActivity() {
                         .getColor(R.color.orange)
                 )
             )
+
+        sharedPreferences = getSharedPreferences("Holds", MODE_PRIVATE)
+        val hold1: String = sharedPreferences.getString("hold1", getString(R.string.text_view_hold)).toString()
+        val hold2: String = sharedPreferences.getString("hold2", getString(R.string.text_view_hold)).toString()
+        if (hold1 == "none") {
+            binding.textViewHold1.setText(R.string.text_view_hold)
+        } else {
+            binding.textViewHold1.text = hold1
+        }
+        if (hold2 == "none") {
+            binding.textViewHold2.setText(R.string.text_view_hold)
+        } else {
+            binding.textViewHold2.text = hold2
+        }
     }
 
     private fun initAction() {
@@ -76,6 +99,48 @@ class MainActivity : AppCompatActivity() {
         binding.textViewLocation.setOnClickListener {
             getLocation()
         }
+
+        binding.textViewHold1.setOnClickListener {
+            viewModel.loadWeatherDay(City(binding.textViewHold1.text.toString()))
+        }
+
+        binding.textViewHold2.setOnClickListener {
+            viewModel.loadWeatherDay(City(binding.textViewHold2.text.toString()))
+        }
+
+        binding.textViewHold1.setOnLongClickListener {
+            showEditTextDialog(binding.textViewHold1)
+            false
+        }
+
+        binding.textViewHold2.setOnLongClickListener {
+            showEditTextDialog(binding.textViewHold2)
+            false
+        }
+    }
+
+    private fun showEditTextDialog(textView: TextView) {
+        val inflater = LayoutInflater.from(this)
+        val viewInflater: View = inflater.inflate(R.layout.edit_text_layout, null)
+        val alert = AlertDialog.Builder(this)
+        alert.setView(viewInflater)
+        val editTextFastPanel = viewInflater.findViewById<View>(R.id.editTextFastPanel) as EditText
+        editTextFastPanel.requestFocus()
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+        alert.setPositiveButton(R.string.dialog_set) { dialog, whichButton ->
+            if (editTextFastPanel.text.toString() == "") {
+                textView.setText(R.string.text_view_hold)
+            } else {
+                textView.text = editTextFastPanel.text.toString().trim { it <= ' ' }
+            }
+            imm.hideSoftInputFromWindow(editTextFastPanel.windowToken, 0)
+        }
+        alert.setNegativeButton(R.string.dialog_cancel) { dialog, whichButton ->
+            imm.hideSoftInputFromWindow(editTextFastPanel.windowToken, 0)
+            dialog.cancel()
+        }
+        alert.show()
     }
 
     private fun checkPermission(): Boolean {

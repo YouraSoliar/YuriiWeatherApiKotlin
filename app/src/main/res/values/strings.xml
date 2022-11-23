@@ -14,4 +14,8 @@
     <string name="text_view_get_location">get your location</string>
     <string name="toast_no_city">no such city</string>
     <string name="toast_no_internet">No Internet</string>
+    <string name="text_view_hold">hold</string>
+    <string name="dialog_set">Set</string>
+    <string name="dialog_cancel">Cancel</string>
+    <string name="dialog_pin_your_city">Pin your City</string>
 </resources>
