@@ -18,4 +18,7 @@
     <string name="dialog_set">Set</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_pin_your_city">Pin your City</string>
+    <string name="fragment_weather">weather list</string>
+    <string name="fragment_constance">constance</string>
+    <string name="alert_enter_city">Enter City</string>
 </resources>

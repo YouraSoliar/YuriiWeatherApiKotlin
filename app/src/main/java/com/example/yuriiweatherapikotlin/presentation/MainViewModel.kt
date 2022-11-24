@@ -10,7 +10,8 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class MainViewModel : ViewModel() {
+open class MainViewModel : ViewModel() {
+    val city: MutableLiveData<City> by lazy { MutableLiveData<City>() }
     private val weatherDays = MutableLiveData<List<WeatherDay>>()
     private val compositeDisposable = CompositeDisposable()
     private var error = MutableLiveData<Int>()

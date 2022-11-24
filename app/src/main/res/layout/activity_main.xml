@@ -54,7 +54,7 @@
         android:layout_marginTop="10dp" />
 
     <TextView
-        android:id="@+id/textViewHold1"
+        android:id="@+id/textViewWeatherList"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginLeft="15dp"
@@ -62,14 +62,14 @@
         android:layout_marginRight="15dp"
         android:background="@color/orange"
         android:gravity="center"
-        android:text="@string/text_view_hold"
+        android:text="@string/fragment_weather"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/textViewHold2"
+        app:layout_constraintEnd_toStartOf="@+id/textViewConstance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewFind" />
 
     <TextView
-        android:id="@+id/textViewHold2"
+        android:id="@+id/textViewConstance"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginLeft="15dp"
@@ -77,23 +77,22 @@
         android:background="@color/orange"
         android:gravity="center"
         android:layout_marginTop="10dp"
-        android:text="@string/text_view_hold"
+        android:text="@string/fragment_constance"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textViewHold1"
+        app:layout_constraintStart_toEndOf="@+id/textViewWeatherList"
         app:layout_constraintTop_toBottomOf="@+id/textViewFind" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewWeather"
+    <FrameLayout
+        android:id="@+id/place_holder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="220dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHold1"
-        tools:itemCount="14"
-        tools:listitem="@layout/weather_item" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeatherList">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
