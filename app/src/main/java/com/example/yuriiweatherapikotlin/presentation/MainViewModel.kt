@@ -1,5 +1,6 @@
 package com.example.yuriiweatherapikotlin.presentation
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -30,10 +31,16 @@ open class MainViewModel : ViewModel() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     weatherDays.value = it.weatherDaysResponse.weatherDayList
-                }, {
-                    error.value = 1 //no such city
-                })
-            compositeDisposable.add(disposable)
+                }) {
+                    if (city.city == "") {
+                        error.value = 3 //fill the field
+                    } else if (it.message.toString() == "HTTP 400 ") {
+                        error.value = 1 //no such city
+                    } else {
+                        error.value = 2 //no internet
+                    }
+                }
+        compositeDisposable.add(disposable)
     }
 
     override fun onCleared() {

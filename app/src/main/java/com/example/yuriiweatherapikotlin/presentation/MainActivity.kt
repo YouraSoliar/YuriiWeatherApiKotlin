@@ -52,8 +52,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun initAction() {
         viewModel.getError().observe(this) {
-            if (it == 1) {
-                Toast.makeText(application, R.string.toast_no_city, Toast.LENGTH_SHORT).show()
+            when (it) {
+                1 -> {
+                    Toast.makeText(application, R.string.toast_no_city, Toast.LENGTH_SHORT).show()
+                }
+                2 -> {
+                    Toast.makeText(application, R.string.toast_no_internet, Toast.LENGTH_SHORT).show()
+                }
+                3 -> {
+                    Toast.makeText(application, R.string.toast_fill_field, Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
@@ -65,8 +73,6 @@ class MainActivity : AppCompatActivity() {
         binding.textViewFind.setOnClickListener {
             val city = City(binding.editTextCity.text.toString())
             if (!isNetworkAvailable()) {
-                Toast.makeText(application, R.string.toast_fill_field, Toast.LENGTH_SHORT).show()
-            } else if ((city.city == "")) {
                 Toast.makeText(application, R.string.toast_no_internet, Toast.LENGTH_SHORT).show()
             } else {
                 viewModel.loadWeatherDay(city)

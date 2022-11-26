@@ -72,7 +72,12 @@ class FragmentConstance : Fragment() {
         val hold3 = preferences.getString("hold3", getString(R.string.text_view_hold))
         val hold4 = preferences.getString("hold4", getString(R.string.text_view_hold))
         val holds = mutableListOf(hold1, hold2, hold3, hold4)
-        val texts = mutableListOf(binding.textViewConst1, binding.textViewConst2, binding.textViewConst3, binding.textViewConst4)
+        val texts = mutableListOf(
+            binding.textViewConst1,
+            binding.textViewConst2,
+            binding.textViewConst3,
+            binding.textViewConst4)
+
         for (i in 0..3) {
             if (holds[i] == getString(R.string.text_view_hold)) {
                 texts[i].setText((R.string.text_view_hold))
@@ -83,9 +88,11 @@ class FragmentConstance : Fragment() {
     }
 
     private fun openFragment() {
-
         val fragmentWeatherList = FragmentWeatherList()
-        activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.place_holder, fragmentWeatherList)?.addToBackStack(null)?.commit()
+        activity?.
+        supportFragmentManager?.beginTransaction()?.
+        replace(R.id.place_holder, fragmentWeatherList)?.
+        addToBackStack(null)?.commit()
     }
 
     companion object {
@@ -104,9 +111,14 @@ class FragmentConstance : Fragment() {
         builder.setView(input)
 
         builder.setPositiveButton(R.string.dialog_set, DialogInterface.OnClickListener { dialog, which ->
-            textView.text = input.text.toString()
+            if (input.text.toString() == "") {
+                textView.text = getText(R.string.text_view_hold)
+            } else {
+                textView.text = input.text.toString()
+            }
         })
-        builder.setNegativeButton(R.string.dialog_cancel, DialogInterface.OnClickListener { dialog, which -> dialog.cancel() })
+        builder.setNegativeButton(R.string.dialog_cancel, DialogInterface.OnClickListener { dialog, which ->
+            dialog.cancel() })
 
         builder.show()
     }
@@ -115,7 +127,12 @@ class FragmentConstance : Fragment() {
     override fun onPause() {
         super.onPause()
         val editor: SharedPreferences.Editor = preferences.edit()
-        val texts = mutableListOf(binding.textViewConst1, binding.textViewConst2, binding.textViewConst3, binding.textViewConst4)
+        val texts = mutableListOf(
+            binding.textViewConst1,
+            binding.textViewConst2,
+            binding.textViewConst3,
+            binding.textViewConst4)
+
         for (i in 0..3) {
             if (texts[i].text.toString() == getString(R.string.text_view_hold)) {
                 editor.putString("hold${i+1}", getString(R.string.text_view_hold))
