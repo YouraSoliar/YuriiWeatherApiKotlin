@@ -1,4 +1,4 @@
-package com.example.yuriiweatherapikotlin.models
+package com.example.yuriiweatherapikotlin.domain.models
 
 import com.google.gson.annotations.SerializedName
 

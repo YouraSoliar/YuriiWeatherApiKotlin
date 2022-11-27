@@ -4,14 +4,16 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.yuriiweatherapikotlin.api.ApiFactory
-import com.example.yuriiweatherapikotlin.models.City
-import com.example.yuriiweatherapikotlin.models.WeatherDay
+import com.example.yuriiweatherapikotlin.domain.api.ApiFactory
+import com.example.yuriiweatherapikotlin.data.WeatherRepositoryImpl
+import com.example.yuriiweatherapikotlin.domain.models.City
+import com.example.yuriiweatherapikotlin.domain.models.WeatherDay
+import com.example.yuriiweatherapikotlin.domain.usecase.LoadWeatherUseCase
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-open class MainViewModel : ViewModel() {
+open class MainViewModel(private val loadWeatherUseCase: LoadWeatherUseCase) : ViewModel() {
     val city: MutableLiveData<City> by lazy { MutableLiveData<City>() }
     private val weatherDays = MutableLiveData<List<WeatherDay>>()
     private val compositeDisposable = CompositeDisposable()
@@ -26,6 +28,7 @@ open class MainViewModel : ViewModel() {
     }
 
     fun loadWeatherDay(city: City) {
+
             val disposable = ApiFactory.apiService.loadWeatherDay(city.city)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

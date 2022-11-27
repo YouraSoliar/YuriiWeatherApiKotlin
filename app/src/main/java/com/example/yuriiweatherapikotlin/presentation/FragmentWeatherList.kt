@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
-import com.example.yuriiweatherapikotlin.adapter.WeatherAdapter
+import com.example.yuriiweatherapikotlin.presentation.adapter.WeatherAdapter
 import com.example.yuriiweatherapikotlin.databinding.FragmentWeatherListBinding
 
 class FragmentWeatherList : Fragment() {

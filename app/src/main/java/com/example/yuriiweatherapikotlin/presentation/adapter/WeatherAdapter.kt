@@ -1,4 +1,4 @@
-package com.example.yuriiweatherapikotlin.adapter
+package com.example.yuriiweatherapikotlin.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.yuriiweatherapikotlin.R
 import androidx.recyclerview.widget.RecyclerView
-import com.example.yuriiweatherapikotlin.models.WeatherDay
+import com.example.yuriiweatherapikotlin.domain.models.WeatherDay
 
 
 class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {

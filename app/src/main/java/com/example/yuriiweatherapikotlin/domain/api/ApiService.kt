@@ -1,6 +1,6 @@
-package com.example.yuriiweatherapikotlin.api
+package com.example.yuriiweatherapikotlin.domain.api
 
-import com.example.yuriiweatherapikotlin.models.WeatherResponse
+import com.example.yuriiweatherapikotlin.domain.models.WeatherResponse
 import io.reactivex.rxjava3.core.Single
 
 import retrofit2.http.GET

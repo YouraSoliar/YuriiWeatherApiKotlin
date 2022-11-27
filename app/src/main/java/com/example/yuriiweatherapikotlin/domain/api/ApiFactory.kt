@@ -1,4 +1,4 @@
-package com.example.yuriiweatherapikotlin.api
+package com.example.yuriiweatherapikotlin.domain.api
 
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory

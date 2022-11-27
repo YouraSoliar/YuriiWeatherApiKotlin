@@ -16,8 +16,12 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.yuriiweatherapikotlin.R
+import com.example.yuriiweatherapikotlin.app.App
+import com.example.yuriiweatherapikotlin.data.WeatherRepositoryImpl
 import com.example.yuriiweatherapikotlin.databinding.ActivityMainBinding
-import com.example.yuriiweatherapikotlin.models.City
+import com.example.yuriiweatherapikotlin.domain.models.City
+import com.example.yuriiweatherapikotlin.domain.repository.WeatherRepository
+import com.example.yuriiweatherapikotlin.domain.usecase.LoadWeatherUseCase
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import java.io.IOException
@@ -28,11 +32,15 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: MainViewModel
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    @javax.inject.Inject
+    lateinit var vmFactory: MainViewModelFactory
+
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        (applicationContext as App).appComponent.inject(this)
+        viewModel = ViewModelProvider(this, vmFactory)[MainViewModel::class.java]
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)

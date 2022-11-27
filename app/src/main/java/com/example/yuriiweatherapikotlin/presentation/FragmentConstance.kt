@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.yuriiweatherapikotlin.R
 import com.example.yuriiweatherapikotlin.databinding.FragmentConstanceBinding
-import com.example.yuriiweatherapikotlin.models.City
+import com.example.yuriiweatherapikotlin.domain.models.City
 
 class FragmentConstance : Fragment() {
     private val viewModel: MainViewModel by activityViewModels()
