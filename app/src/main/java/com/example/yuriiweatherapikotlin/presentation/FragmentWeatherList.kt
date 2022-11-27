@@ -28,7 +28,7 @@ class FragmentWeatherList : Fragment() {
         adapter = WeatherAdapter()
         binding.recyclerViewWeather.adapter = adapter
 
-        viewModel.getWeatherDay().observe(activity as LifecycleOwner) {
+        viewModel.weathersLiveData.observe(activity as LifecycleOwner) {
             adapter.setWeathers(it)
         }
     }

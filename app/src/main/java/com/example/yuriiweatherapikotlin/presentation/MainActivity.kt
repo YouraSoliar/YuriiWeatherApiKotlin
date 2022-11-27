@@ -2,7 +2,6 @@ package com.example.yuriiweatherapikotlin.presentation
 
 import android.Manifest
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.graphics.drawable.ColorDrawable
 import android.location.Address
@@ -17,11 +16,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.yuriiweatherapikotlin.R
 import com.example.yuriiweatherapikotlin.app.App
-import com.example.yuriiweatherapikotlin.data.WeatherRepositoryImpl
 import com.example.yuriiweatherapikotlin.databinding.ActivityMainBinding
 import com.example.yuriiweatherapikotlin.domain.models.City
-import com.example.yuriiweatherapikotlin.domain.repository.WeatherRepository
-import com.example.yuriiweatherapikotlin.domain.usecase.LoadWeatherUseCase
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import java.io.IOException
@@ -59,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initAction() {
-        viewModel.getError().observe(this) {
+        viewModel.errorsLiveData.observe(this) {
             when (it) {
                 1 -> {
                     Toast.makeText(application, R.string.toast_no_city, Toast.LENGTH_SHORT).show()

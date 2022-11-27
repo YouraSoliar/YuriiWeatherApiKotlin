@@ -8,7 +8,6 @@ import com.example.yuriiweatherapikotlin.R
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yuriiweatherapikotlin.domain.models.WeatherDay
 
-
 class WeatherAdapter: RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {
     private var weathers: List<WeatherDay> = ArrayList()
     fun setWeathers(weathersVM: List<WeatherDay>) {
